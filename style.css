@@ -1,0 +1,289 @@
+/* =============================================
+   Online Class Launcher — Dark Cyber Clean
+   Palette: Deep Blue + Subtle Pink
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #080c18;
+  color: #cdd5e8;
+  width: 360px;
+  min-width: 320px;
+  height: auto;
+  padding: 18px 16px 24px;
+}
+
+/* ---------- Header ---------- */
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #131d38;
+}
+
+.header-accent {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.header-accent span {
+  display: block;
+  height: 14px;
+  border-radius: 2px;
+}
+
+.header-accent .bar-blue {
+  width: 3px;
+  background: #4080ff;
+}
+
+.header-accent .bar-pink {
+  width: 3px;
+  background: #d9618a;
+  opacity: 0.65;
+}
+
+h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #e4eaf8;
+  letter-spacing: 0.1px;
+}
+
+h4 {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #4080ff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+}
+
+/* ---------- Form Card ---------- */
+.form-card {
+  background: #0d1428;
+  border-radius: 8px;
+  padding: 15px 14px;
+  border: 1px solid #131d38;
+  margin-bottom: 16px;
+}
+
+/* ---------- Form Groups ---------- */
+.form-group {
+  margin-bottom: 11px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #3a507a;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #131d38;
+  border-radius: 5px;
+  background: #080c18;
+  color: #cdd5e8;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-group input::placeholder {
+  color: #1e2c4a;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #4080ff;
+  box-shadow: 0 0 0 2px rgba(64, 128, 255, 0.18);
+}
+
+/* Time input dark fix */
+.form-group input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.4) sepia(1) saturate(2) hue-rotate(190deg);
+  cursor: pointer;
+}
+
+/* Custom select arrow */
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%233a507a' d='M5 7L0 2h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+  cursor: pointer;
+}
+
+.form-group select option {
+  background: #0d1428;
+  color: #cdd5e8;
+}
+
+/* ---------- Save Button ---------- */
+#saveBtn {
+  display: block;
+  width: 100%;
+  padding: 9px 12px;
+  margin-top: 4px;
+  background: #4080ff;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+}
+
+#saveBtn:hover {
+  background: #5591ff;
+  box-shadow: 0 0 16px rgba(64, 128, 255, 0.38);
+}
+
+#saveBtn:active {
+  transform: scale(0.98);
+  background: #2d6aee;
+  box-shadow: none;
+}
+
+/* ---------- Section Divider ---------- */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #131d38;
+}
+
+/* ---------- Schedule List ---------- */
+#scheduleList {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+#scheduleList p {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #1e2c4a;
+  padding: 14px 0;
+}
+
+/* Each schedule card */
+#scheduleList > div {
+  background: #0d1428;
+  border-radius: 6px;
+  padding: 10px 12px;
+  border: 1px solid #131d38;
+  border-left: 2px solid #4080ff;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: #8a9dc4;
+  transition: border-left-color 0.2s, background 0.15s;
+}
+
+#scheduleList > div:hover {
+  background: #101830;
+  border-left-color: #d9618a;
+}
+
+#scheduleList strong {
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: #e4eaf8;
+  display: block;
+  margin-bottom: 1px;
+}
+
+/* Join Class link */
+#scheduleList a {
+  color: #4080ff;
+  font-weight: 500;
+  font-size: 0.79rem;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+#scheduleList a:hover {
+  color: #7aaaff;
+}
+
+/* Delete button */
+.deleteBtn {
+  float: right;
+  padding: 2px 8px;
+  background: transparent;
+  color: #253558;
+  border: 1px solid #131d38;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  line-height: 1.5;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.deleteBtn:hover {
+  background: #d9618a;
+  color: #ffffff;
+  border-color: #d9618a;
+}
+
+/* Clearfix */
+#scheduleList > div::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* ---------- Scrollbar ---------- */
+#scheduleList::-webkit-scrollbar {
+  width: 4px;
+}
+#scheduleList::-webkit-scrollbar-track {
+  background: transparent;
+}
+#scheduleList::-webkit-scrollbar-thumb {
+  background: #131d38;
+  border-radius: 4px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 360px) {
+  body {
+    width: 100%;
+    padding: 14px 10px 18px;
+  }
+}

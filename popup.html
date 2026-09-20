@@ -2,53 +2,54 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <style>
-    /* center the contents */
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 50vh;
-      width: 70vh;
-      font-family: Arial, sans-serif;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h3>Add Class Schedule</h3>
-  <div class="form-group">
-    <label for="subject">Subject Name:</label><br>
-    <input type="text" id="subject" placeholder="e.g., Math">
+  <div class="popup-header">
+    <div class="header-accent">
+      <span class="bar-blue"></span>
+      <span class="bar-pink"></span>
+    </div>
+    <h3>Class Scheduler</h3>
   </div>
 
-  <div class="form-group">
-    <label for="classTime">Time:</label><br>
-    <input type="time" id="classTime">
+  <div class="form-card">
+    <div class="form-group">
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" placeholder="e.g., Mathematics">
+    </div>
+
+    <div class="form-group">
+      <label for="classTime">Time</label>
+      <input type="time" id="classTime">
+    </div>
+
+    <div class="form-group">
+      <label for="classDay">Day</label>
+      <select id="classDay">
+        <option value="1">Monday</option>
+        <option value="2">Tuesday</option>
+        <option value="3">Wednesday</option>
+        <option value="4">Thursday</option>
+        <option value="5">Friday</option>
+        <option value="6">Saturday</option>
+        <option value="0">Sunday</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="classLink">Meet Link</label>
+      <input type="url" id="classLink" placeholder="https://meet.google.com/...">
+    </div>
+
+    <button id="saveBtn">Save Schedule</button>
   </div>
 
-  <div class="form-group">
-    <label for="classDay">Day:</label><br>
-    <select id="classDay">
-      <option value="1">Monday</option>
-      <option value="2">Tuesday</option>
-      <option value="3">Wednesday</option>
-      <option value="4">Thursday</option>
-      <option value="5">Friday</option>
-      <option value="6">Saturday</option>
-      <option value="0">Sunday</option>
-    </select>
+  <div class="section-label">
+    <h4>Saved Schedules</h4>
   </div>
-
-  <div class="form-group">
-    <label for="classLink">Meet Link:</label><br>
-    <input type="url" id="classLink" placeholder="https://meet.google.com/...">
-  </div>
-
-  <button id="saveBtn">Save Schedule</button>
-
-  <hr>
-  <h4>Saved Schedules</h4>
   <div id="scheduleList"></div>
 
   <script src="popup.js"></script>
