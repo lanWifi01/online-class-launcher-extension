@@ -239,8 +239,8 @@ h4 {
   color: #7aaaff;
 }
 
-/* Delete button */
-.deleteBtn {
+/* Delete button and edit button */
+.deleteBtn, .editBtn {
   float: right;
   padding: 2px 8px;
   background: transparent;
@@ -255,10 +255,21 @@ h4 {
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
+.editBtn {
+  text-decoration: none;
+  color: #253558 !important; 
+}
+
 .deleteBtn:hover {
   background: #d9618a;
   color: #ffffff;
   border-color: #d9618a;
+}
+
+.editBtn:hover {
+  background: #d9cd61;
+  color: #ffffff;
+  border-color: #d1b75f;
 }
 
 /* Clearfix */

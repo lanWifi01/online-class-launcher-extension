@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const classTime = document.getElementById('classTime');
     const classDay = document.getElementById('classDay');
     const classLink = document.getElementById('classLink');
+    let alertMessage = 'New Class Saved'
 
     displaySchedules()
 
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentSchedules.push(newClass)
 
             chrome.storage.local.set({schedules: currentSchedules}, () => {
-                alert('New Class Saved')
+                alert(alertMessage)
                 subject.value = ''
                 classTime.value = ''
                 classDay.value = ''
@@ -53,6 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return
             }
 
+            let editIndex = null
+
             schedules.forEach((item, index) => {
                 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
@@ -61,12 +64,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     <strong>${item.subject}</strong><br>
                     Day: ${days[item.day]} | Time: ${item.time}<br>
                     <a href="${item.link}" target="_blank">Join Class</a>
-                    <button class='deleteBtn'>Delete</button>
+                    <button class='deleteBtn'>Delete</button><a class='editBtn' href='#popup-header'>Edit</a>
                 `;
 
                 const deleteBtn = div.querySelector('.deleteBtn')
                 deleteBtn.addEventListener('click', () => {
                     deleteSchedule(index)
+                })
+
+                const editBtn = div.querySelector('.editBtn')
+                editBtn.addEventListener('click', () => {
+                    const subject = document.getElementById('subject')
+                    const classTime = document.getElementById('classTime')
+                    const classDay = document.getElementById('classDay')
+                    const classLink = document.getElementById('classLink')
+
+                    subject.value = item.subject
+                    classTime.value = item.time
+                    classDay.value = item.day
+                    classLink.value = item.link
+
+                    editIndex = index
+                    const updateBtn = document.querySelector('#saveBtn')
+                    updateBtn.textContent = 'Update Content'
+                    
+
+                    updateBtn.addEventListener('click', () => {
+                        alertMessage = `${subject.value} successfully updated.`
+                        editContent(index, subject.value, classTime.value, classDay.value, classLink.value)
+                    })
                 })
 
                 savedSched.appendChild(div); 
@@ -80,6 +106,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             schedules.splice(index, 1)
 
+            chrome.storage.local.set({schedules: schedules}, () => {
+                displaySchedules()
+            })
+        })
+    }
+
+    function editContent(index, subject, time, day, link) {
+        chrome.storage.local.get(['schedules'], result => {
+            let schedules = result.schedules || []
+
+            schedules[index].subject = subject
+            schedules[index].time = time
+            schedules[index].day = day
+            schedules[index].link = link
+            
             chrome.storage.local.set({schedules: schedules}, () => {
                 displaySchedules()
             })
