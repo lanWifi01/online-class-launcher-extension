@@ -31,8 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!linkVal.startsWith('http://') && !linkVal.startsWith('https://')) {
-            linkVal = 'https://' + linkVal;
+            alert('Invalid Link.')
+            resetForm()
+            return
         }
+
+        
 
         chrome.storage.local.get(['schedules'], result => {
             const currentSchedules = result.schedules || []
