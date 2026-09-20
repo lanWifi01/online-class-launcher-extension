@@ -1,4 +1,4 @@
-# Auto Class Opener - Chrome Extension
+# Online Class Launcher - Chrome Extension
 
 An automated Chrome Extension that schedules online class links (Google Meet, Zoom, MS Teams, etc.) and automatically opens them in your browser when it's time for class! Para sa mga tulad ko na nakakalimutan ang online classes.
 
