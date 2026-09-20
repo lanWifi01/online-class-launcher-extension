@@ -54,10 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             schedules.forEach((item, index) => {
+                const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
                 const div = document.createElement('div');
                 div.innerHTML = `
                     <strong>${item.subject}</strong><br>
-                    Day: ${item.day} | Time: ${item.time}<br>
+                    Day: ${days[item.day-1]} | Time: ${item.time}<br>
                     <a href="${item.link}" target="_blank">Join Class</a>
                     <button class='deleteBtn'>Delete</button>
                 `;
