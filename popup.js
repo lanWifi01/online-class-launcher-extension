@@ -5,39 +5,59 @@ document.addEventListener('DOMContentLoaded', () => {
     const classTime = document.getElementById('classTime');
     const classDay = document.getElementById('classDay');
     const classLink = document.getElementById('classLink');
-    let alertMessage = 'New Class Saved'
+
+    let editIndex = null
 
     displaySchedules()
+
+    function resetForm() {
+        subject.value = ''
+        classTime.value = ''
+        classDay.value = ''
+        classLink.value = ''
+        editIndex = null
+        saveBtn.textContent = 'Save Schedule'
+    }
 
     saveBtn.addEventListener('click', () => {
         const subjectVal = subject.value
         const timeVal = classTime.value
         const dayVal = classDay.value
-        const linkVal = classLink.value
+        let linkVal = classLink.value
 
         if (!subjectVal || !timeVal || !dayVal || !linkVal) {
             alert('All fields must be loaded.')
             return
         }
 
-        let newClass = {
-            subject: subjectVal,
-            time: timeVal,
-            day: parseInt(dayVal),
-            link: linkVal
+        if (!linkVal.startsWith('http://') && !linkVal.startsWith('https://')) {
+            linkVal = 'https://' + linkVal;
         }
 
         chrome.storage.local.get(['schedules'], result => {
             const currentSchedules = result.schedules || []
 
-            currentSchedules.push(newClass)
+            if (editIndex !== null) {
+                currentSchedules[editIndex] = {
+                    subject: subjectVal,
+                    time: timeVal,
+                    day: parseInt(dayVal),
+                    link: linkVal
+                }            
+                alert(`${subjectVal} updated.`)
+            } else {
+                let newClass = {
+                    subject: subjectVal,
+                    time: timeVal,
+                    day: parseInt(dayVal),
+                    link: linkVal
+                }
+                currentSchedules.push(newClass)
+                alert(`${subjectVal} successfully added.`)
+            }
 
-            chrome.storage.local.set({schedules: currentSchedules}, () => {
-                alert(alertMessage)
-                subject.value = ''
-                classTime.value = ''
-                classDay.value = ''
-                classLink.value = ''
+            chrome.storage.local.set({schedules: currentSchedules}, () => { 
+                resetForm()
                 displaySchedules()
             })
         })
@@ -52,9 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (schedules.length === 0) {
                 savedSched.innerHTML = '<p>No saved schedules.</p>'
                 return
-            }
-
-            let editIndex = null
+            }            
 
             schedules.forEach((item, index) => {
                 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -85,14 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     classLink.value = item.link
 
                     editIndex = index
-                    const updateBtn = document.querySelector('#saveBtn')
-                    updateBtn.textContent = 'Update Content'
-                    
-
-                    updateBtn.addEventListener('click', () => {
-                        alertMessage = `${subject.value} successfully updated.`
-                        editContent(index, subject.value, classTime.value, classDay.value, classLink.value)
-                    })
+                    saveBtn.textContent = 'Update Content'
                 })
 
                 savedSched.appendChild(div); 
@@ -106,21 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             schedules.splice(index, 1)
 
-            chrome.storage.local.set({schedules: schedules}, () => {
-                displaySchedules()
-            })
-        })
-    }
+            if (editIndex === index) {
+                resetForm();
+            }
 
-    function editContent(index, subject, time, day, link) {
-        chrome.storage.local.get(['schedules'], result => {
-            let schedules = result.schedules || []
-
-            schedules[index].subject = subject
-            schedules[index].time = time
-            schedules[index].day = day
-            schedules[index].link = link
-            
             chrome.storage.local.set({schedules: schedules}, () => {
                 displaySchedules()
             })
