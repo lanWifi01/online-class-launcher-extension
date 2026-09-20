@@ -41,7 +41,7 @@ Follow niyo lang tong steps to install the extension:
 1. Click the Puzzle Piece icon 🧩 (Extensions menu) at the top-right corner of Chrome (next to your profile picture).
 2. Find Auto Class Opener and click the Pin icon 📌 so it stays on your toolbar.
 
-### 💡 How to Use
+### How to Use
 1. Click the Auto Class Opener icon on your Chrome toolbar.
 2. Fill out your class details:
     - Subject: (e.g., Math 101)
@@ -50,7 +50,7 @@ Follow niyo lang tong steps to install the extension:
     - Meeting Link: Paste your Google Meet, Zoom, or class link.
 3. Click Save Schedule.
 
-4. That's it! Buksan lang yung chrome. When class time comes, your meeting link will automatically pop open in a new tab!
+4. Buksan lang yung chrome. Pag oras na ng klase the link will open automatically.
 
-### 🔒 Privacy & Safety
+### Privacy & Safety
 - **100% Offline & Local:** All your schedules and links are saved directly inside your own browser using chrome.storage.local. None of your personal data is sent to external servers or collected by anyone.
