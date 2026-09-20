@@ -49,8 +49,7 @@ Follow niyo lang tong steps to install the extension:
     - Day: Choose the day of the week.
     - Meeting Link: Paste your Google Meet, Zoom, or class link.
 3. Click Save Schedule.
-
-4. Buksan lang yung chrome. Pag oras na ng klase the link will open automatically.
+4. Buksan lang yung chrome. Pag oras na ng klase the link will open automatically. (*Note: medyo delayed ang pagpasok sa zoom ng ilang seconds.*)
 
 ### Privacy & Safety
 - **100% Offline & Local:** All your schedules and links are saved directly inside your own browser using chrome.storage.local. None of your personal data is sent to external servers or collected by anyone.
