@@ -39,7 +39,7 @@ Follow niyo lang tong steps to install the extension:
 
 ### Step 3: Pin the Extension for Easy Access
 1. Click the Puzzle Piece icon 🧩 (Extensions menu) at the top-right corner of Chrome (next to your profile picture).
-2. Find Auto Class Opener and click the Pin icon 📌 so it stays on your toolbar.
+2. Find Online Class Launcher and click the Pin icon 📌 so it stays on your toolbar.
 
 ### How to Use
 1. Click the Auto Class Opener icon on your Chrome toolbar.
