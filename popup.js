@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const classDay = document.getElementById('classDay');
     const classLink = document.getElementById('classLink');
 
+    displaySchedules()
+
     saveBtn.addEventListener('click', () => {
         const subjectVal = subject.value
         const timeVal = classTime.value
@@ -35,7 +37,50 @@ document.addEventListener('DOMContentLoaded', () => {
                 classTime.value = ''
                 classDay.value = ''
                 classLink.value = ''
+                displaySchedules()
             })
         })
     })
+
+    function displaySchedules() {
+        chrome.storage.local.get(['schedules'], result => {
+            const schedules = result.schedules || []
+
+            savedSched.innerHTML = ''
+
+            if (schedules.length === 0) {
+                savedSched.innerHTML = '<p>No saved schedules.</p>'
+                return
+            }
+
+            schedules.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    <strong>${item.subject}</strong><br>
+                    Day: ${item.day} | Time: ${item.time}<br>
+                    <a href="${item.link}" target="_blank">Join Class</a>
+                    <button class='deleteBtn'>Delete</button>
+                `;
+
+                const deleteBtn = div.querySelector('.deleteBtn')
+                deleteBtn.addEventListener('click', () => {
+                    deleteSchedule(index)
+                })
+
+                savedSched.appendChild(div); 
+            })
+        })
+    }
+
+    function deleteSchedule(index) {
+        chrome.storage.local.get(['schedules'], result => {
+            let schedules = result.schedules || []
+
+            schedules.splice(index, 1)
+
+            chrome.storage.local.set({schedules: schedules}, () => {
+                displaySchedules()
+            })
+        })
+    }
 })
