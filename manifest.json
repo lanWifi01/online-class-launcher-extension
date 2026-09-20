@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Online Class Launcher",
+  "version": "1.0",
+  "permissions": [
+    "storage",
+    "alarms",
+    "tabs"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
