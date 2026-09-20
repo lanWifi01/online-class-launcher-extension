@@ -42,7 +42,7 @@ Follow niyo lang tong steps to install the extension:
 2. Find Online Class Launcher and click the Pin icon 📌 so it stays on your toolbar.
 
 ### How to Use
-1. Click the Auto Class Opener icon on your Chrome toolbar.
+1. Click the Online Class Launcher icon on your Chrome toolbar.
 2. Fill out your class details:
     - Subject: (e.g., Math 101)
     - Time: Set your class time (e.g., 08:30 AM or 13:30).
